@@ -1,0 +1,59 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.product-container {
+  display: flex;
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+  gap: 20px;
+  justify-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.filters {
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: auto;
+  border: 1px solid #7c7c7c;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.viewButton {
+  margin-top: 5px;
+}
+
+.player-header {
+  height: 55px;
+  background-color: #024f9d;
+  color: white;
+}
+
+.player-button {
+  position: relative;
+  color: white;
+  justify-content: center;
+  border: 1px solid white;
+  width: 50px;
+  border-radius: 2px;
+}
+
+.detailsBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
