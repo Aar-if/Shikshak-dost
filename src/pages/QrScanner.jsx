@@ -13,7 +13,7 @@ function QrScanner() {
   const [FrontmediaStream, setFrontmediaStream] = useState(null);
 
   const navigate = useNavigate();
-  const myRegister = () => {
+  const myRegisters = () => {
     navigate("/aisearch");
   };
 
@@ -80,7 +80,7 @@ function QrScanner() {
     <React.Fragment>
       <Header />
 
-      <button className={styles.button} onClick={myRegister}>
+      <button className={styles.button} onClick={myRegisters}>
         Go back
       </button>
       <div className={styles.qrreader}>
