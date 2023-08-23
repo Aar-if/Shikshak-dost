@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://onest-strapi.tekdinext.com/api/stories",
+      url: "https://onest-strapi.tekdinext.com/api/stories?populate=*",
       responseType: "stream",
     })
       .then(function (response) {
