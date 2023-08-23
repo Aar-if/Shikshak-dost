@@ -110,10 +110,7 @@ function QrScanner() {
               dialcodeFunction(lastSlug);
               // window.open("http://localhost:3010/studentapp", "_blank");
               setTimeout(function () {
-                window.open(
-                  "https://dfh32d43dz5ck.cloudfront.net/teacherapp",
-                  "_self"
-                );
+                window.open("https://dfh32d43dz5ck.cloudfront.net", "_self");
               }, 1000);
 
               // setTimeout(function () {
