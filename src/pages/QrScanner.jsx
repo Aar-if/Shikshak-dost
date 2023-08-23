@@ -115,7 +115,7 @@ function QrScanner() {
 
               setTimeout(function () {
                 window.open(
-                  "https:/dfh32d43dz5ck.cloudfront.net/teacherapp",
+                  "https://dfh32d43dz5ck.cloudfront.net/teacherapp",
                   "_self"
                 );
               }, 1000);
