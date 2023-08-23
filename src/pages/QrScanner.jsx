@@ -127,7 +127,8 @@ function QrScanner() {
           }}
         />
         <div className={styles.heading2}>
-          Hold your device in front of the QR code
+          Scan any 6th-9th grade NCERT textbook QR code for contextual AI Sathi
+          tools
         </div>
       </div>
       <Footer />

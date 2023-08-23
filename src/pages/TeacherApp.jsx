@@ -99,7 +99,6 @@ function TeacherApp() {
       >
         {" "}
         {/* <ArrowBackIcon style={{ color: "gray" }} /> */}
-        {t("TeacherApp")}
       </h2>
       {/* <h3>Dial code : {localqr}</h3> */}
       <div>
@@ -123,11 +122,7 @@ function TeacherApp() {
         {" "}
         {t("ActivityButton")}
       </button>
-      <button className={styles.button}>{t("TestButton")}</button>
-      <button className={styles.button} onClick={myclick4}>
-        {" "}
-        {t("HelpButton")}
-      </button>
+
       <Footer />
     </div>
   );

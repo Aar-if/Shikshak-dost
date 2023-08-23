@@ -1,5 +1,5 @@
 {
-    "welcome": "Welcome to Shikshak Dost!",
+    "welcome": "Welcome to Shikshak Saathi!",
     "footerText": "Developed by Tekdi Technologies | Powered by onest.network",
     "age": "Age",
     "language": "Language",
@@ -28,11 +28,11 @@
     "student":"Student",
     "parent":"Parent",
     "teacher":"Teacher",
-    "button1":"Kahani App",
+    "button1":"Kahani Explorer",
     "button2":"AI Chatbot",
     "button3":"QR Scan",
     "button4":"Activity Explorer",
-    "TeacherApp":"Shikshak Dost",
+    
     "conceptButton":"Concept Clarity Videos",
     "QuestionsButton":"Questions to Ask",
     "PracticeButton":"Practice Sheets",
