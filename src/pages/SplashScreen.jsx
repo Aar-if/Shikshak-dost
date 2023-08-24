@@ -19,7 +19,7 @@ function SplashScreen() {
   };
 
   const chatbot = () => {
-    navigate("/chatbot");
+    navigate("/chatbotui");
   };
 
   const activity = () => {
