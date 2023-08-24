@@ -18,6 +18,10 @@ function SplashScreen() {
     navigate("/qrscanner");
   };
 
+  const chatbot = () => {
+    navigate("/chatbot");
+  };
+
   const activity = () => {
     window.open("http://20.219.197.218/explore");
   };
@@ -38,7 +42,13 @@ function SplashScreen() {
           >
             {t("button1")}
           </Button>
-          <Button background="#F6B26B" size="lg" width={60} margin={3}>
+          <Button
+            onClick={chatbot}
+            background="#F6B26B"
+            size="lg"
+            width={60}
+            margin={3}
+          >
             {t("button2")}
           </Button>
           <Button

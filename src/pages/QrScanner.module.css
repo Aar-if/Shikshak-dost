@@ -60,6 +60,8 @@
   font-size: large;
   font-weight: 300;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 20px;
 }

@@ -85,9 +85,7 @@ function QrScanner() {
       </button>
       <div className={styles.qrreader}>
         <div className={styles.heading}>Scan QR Code</div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          Last Scanned : {data}
-        </div>
+        <div className={styles.heading2}>Last Scanned : {data}</div>
         <QrReader
           className={styles.scanner}
           constraints={{ facingMode: "environment" }}
