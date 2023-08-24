@@ -10,7 +10,16 @@ import Axios from "axios";
 import Header from "./Header";
 
 const Chatbotui = () => {
-  const [messages, setMessages] = useState([]);
+  let [messages, setMessages] = useState([
+    { from: "computer", text: "Welcome to the NEP NCF Sathi Bot. Talk to me to get any quesitons you have about NEP & NCF & I will do my best to answer it." },
+    // { from: "me", text: "Hey there" },
+    // { from: "me", text: "Myself Ferin Patel" },
+    {
+      from: "computer",
+      text: "Here are some sample questions : What is the purpose of the National Curriculum Framework for the Foundational Stage (NCF-FS) How does the National Curriculum Framework for School Education (NCF) align with the vision of the National Education Policy (NEP) 2020",
+    },
+    ]);
+  
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 

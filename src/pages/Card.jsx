@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
             objectFit="cover"
             maxW={{ base: "50%", sm: "200px" }}
             // src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
-            src={`https://onest-strapi.tekdinext.com`+product?.attributes?.image?.data?.attributes?.url}
+            src={`https://onest-strapi.tekdinext.com`+ product?.attributes?.image?.data?.attributes?.url}
             alt="Caffe Latte"
           />
 

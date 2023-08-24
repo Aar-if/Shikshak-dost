@@ -76,17 +76,7 @@ function App() {
               <option value={3}>{t("3")}</option>
               <option value={4}>{t("4")}</option>
               <option value={5}>{t("5")}</option>
-              <option value={6}>{t("6")}</option>
-              <option value={7}>{t("7")}</option>
-              <option value={8}>{t("8")}</option>
-              <option value={9}>{t("9")}</option>
-              <option value={10}>{t("10")}</option>
-              <option value={11}>{t("11")}</option>
-              <option value={12}>{t("12")}</option>
-              <option value={13}>{t("13")}</option>
-              <option value={14}>{t("14")}</option>
-              <option value={15}>{t("15")}</option>
-              <option value={16}>{t("16")}</option>
+    
             </select>
             <select
               className="filters"
@@ -112,9 +102,9 @@ function App() {
 
               <option value="Audio">{t("audio")}</option>
               <option value="Read">{t("read")}</option>
-              <option value="Other">{t("other")}</option>
+              {/* <option value="Other">{t("other")}</option> */}
             </select>
-            <select
+            {/* <select
               className="filters"
               value={actor}
               onChange={(e) => setActor(e.target.value)}
@@ -123,7 +113,7 @@ function App() {
               <option value="Student">{t("student")}</option>
               <option value="Parent">{t("parent")}</option>
               <option value="Teacher">{t("teacher")}</option>
-            </select>
+            </select> */}
           </div>
           {filteredStory.length === 0 ? (
             <p>No data available for the selected filters.</p>

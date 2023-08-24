@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
 import SunbirdVideoPlayer from "./Player";
 import Header from "./Header";
@@ -9,6 +9,8 @@ function StoryDetatils() {
   const location = useLocation();
   const state = location?.state;
   const [showIframe, setShowIframe] = useState(true);
+  const navigate = useNavigate();
+
 
   return (
     <div>
@@ -24,15 +26,18 @@ function StoryDetatils() {
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <div className="player-header">
-          <h1>Detailes of story : {state?.product?.attributes?.Provider}</h1>
-          <button
-            className="player-button"
-            onClick={() => setShowIframe(!showIframe)}
-          >
-            {showIframe ? "X" : "▶"}
-          </button>
-        </div>
+     <div className="player-header">
+  <h1>{state?.product?.attributes?.Provider}</h1>
+  <button
+    className="player-button"
+    onClick={() => {
+      navigate("/");
+    }}
+  >
+    {showIframe ? "X" : "▶"}
+  </button>
+</div>
+
         {showIframe && (
           <div className="video-player">
             <SunbirdVideoPlayer
