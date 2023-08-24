@@ -15,22 +15,23 @@ function Header() {
         <div>
           <img
             src={imagePath}
-            style={{ width: "60px", height: "auto", marginRight: "20px" }}
+            style={{ width: "90%", height: "auto", marginRight: "10%" ,
+          }}
+            onClick={() => navigate("/")}
           />
         </div>
 
         <div
           style={{
             width: "60%",
-            textAlign: "left",
-            paddingLeft: "5px",
-            borderLeft: "1px solid gray",
+            textAlign: "center",
+            paddingRight: "10%",
           }}
         >
           <span>{t("welcome")}</span>
         </div>
         <div className={styles.menuDiv}>
-          <button onClick={() => navigate(-1)}>🏠</button>
+          {/* <button onClick={() => navigate("/")}>🏠</button> */}
         </div>
         <div>
           <Select
