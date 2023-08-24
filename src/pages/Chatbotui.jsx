@@ -45,8 +45,8 @@ const Chatbotui = () => {
     // </div>
     <>
       <Header />
-      <Flex w="100%" h="100vh" justify="center" align="center">
-        <Flex h="80%" flexDir="column">
+      <Flex w="100%" h="85vh" justify="center" align="center" marginTop="80px">
+        <Flex h="100%" flexDir="column">
           <HeaderChat />
           <Messages messages={messages} />
           {isLoading && (
@@ -61,7 +61,6 @@ const Chatbotui = () => {
           </div>
         </Flex>
       </Flex>
-      <Footer2 />
     </>
   );
 };
