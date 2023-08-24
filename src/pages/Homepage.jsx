@@ -44,7 +44,7 @@ function App() {
     const languageFilter =
       language === "all" || item?.attributes?.Language === language;
     const ageGroupFilter =
-      ageGroup === "all" || item?.attributes?.Age === ageGroup;
+      ageGroup === "all" || item?.attributes?.Age == ageGroup;
     const actorFilter = actor === "all" || item?.attributes?.Actor === actor;
 
     return categoryFilter && languageFilter && ageGroupFilter && actorFilter;

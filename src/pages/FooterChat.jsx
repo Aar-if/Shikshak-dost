@@ -6,8 +6,10 @@ const FooterChat = ({ inputMessage, setInputMessage, handleSendMessage }) => {
 	<Flex w="100%" mt="5">
   	<Input
     	placeholder="Type Something..."
-    	border="none"
+    	
     	borderRadius="none"
+		border= "1px solid black"
+
     	_focus={{
       	border: "1px solid black",
     	}}
