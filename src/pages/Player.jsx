@@ -2,6 +2,7 @@ import React from "react";
 
 const SunbirdVideoPlayer = (props) => {
   const [url, setUrl] = React.useState();
+
   React.useEffect(() => {
     if (props?.mimeType === "application/pdf") {
       setUrl(`${process.env.PUBLIC_URL}/players/pdf`);
@@ -21,7 +22,12 @@ const SunbirdVideoPlayer = (props) => {
         `${process.env.PUBLIC_URL}/players/project-sunbird/content-player`
       );
     } else {
-      setUrl(props?.url.replace("watch?v=", "embed/"));
+      if (props?.url.startsWith("http")) {
+        // Open http links in a new tab/window
+        window.open(props.url, "_blank");
+      } else {
+        setUrl(props?.url.replace("watch?v=", "embed/"));
+      }
     }
   }, [props?.mediaType]);
 
