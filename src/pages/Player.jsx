@@ -1,7 +1,8 @@
-import React from "react";
-
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect } from 'react';
 const SunbirdVideoPlayer = (props) => {
   const [url, setUrl] = React.useState();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (props?.mimeType === "application/pdf") {
@@ -25,6 +26,7 @@ const SunbirdVideoPlayer = (props) => {
       if (props?.url.startsWith("http://")) {
         // Open http links in a new tab/window
         window.open(props.url, "_blank");
+        navigate("/home");
       } else {
         setUrl(props?.url.replace("watch?v=", "embed/"));
       }
@@ -42,6 +44,11 @@ const SunbirdVideoPlayer = (props) => {
       />
     );
   } else {
+//     useEffect(() => {
+// navigate("/");}, [
+  
+// ]); 
+
     return <h2>{`${props?.mimeType} this mime type not compatible`}</h2>;
   }
 };
