@@ -7,4 +7,14 @@
   position: fixed;
   background-color: white;
   width: 100%;
+  cursor: pointer
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  text-decoration: underline; 
+  color: blue; 
 }
