@@ -31,7 +31,7 @@ function StoryDetatils() {
   <button
     className="player-button"
     onClick={() => {
-      navigate("/");
+      navigate("/home");
     }}
   >
     {showIframe ? "X" : "▶"}
