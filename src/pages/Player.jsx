@@ -32,7 +32,7 @@ const SunbirdVideoPlayer = (props) => {
         width="100%"
         height="500vh"
         name={JSON.stringify(props)}
-        src={url}
+        src={`${url}?autoplay=1?#toolbar=0`}
       />
     );
   } else {
