@@ -18,7 +18,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
- console.log("product",product?.attributes?.image?.data?.attributes?.url)
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -90,7 +89,7 @@ const ProductCard = ({ product }) => {
   <Text py="2" className="age-info2">{product?.attributes?.Theme}</Text>
 </span>
 <span className="age-info">
-  <Text py="2">Pubished By:</Text>
+  <Text py="2">Published By:</Text>
   <Text py="2" className="age-info2">{product?.attributes?.Provider}</Text>
 </span>
 {/* <span className="age-info">
