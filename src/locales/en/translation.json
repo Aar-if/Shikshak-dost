@@ -1,6 +1,7 @@
 {
-    "welcome": "Welcome to Shikshak Saathi!",
-    "footerText": "Developed by Tekdi Technologies",
+    "welcome": "Shikshak Saathi!",
+    "footerText": "Developed with",
+    "footerText1":"by Tekdi Technologies",
     "onestText": "Powered by onest.network",
     "age": "Age",
     "language": "Language",

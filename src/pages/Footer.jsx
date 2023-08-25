@@ -6,7 +6,7 @@ function Footer() {
   const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
-      <p><a href="https://www.tekdi.net/">{t("footerText")}</a> | <a href="https://onest.network/">{t("onestText")}</a></p>
+      <p><a className={styles.pointer}  href="https://www.tekdi.net/">{t("footerText")} ❤️ {t("footerText1")} </a> | <a className={styles.pointer} href="https://onest.network/">{t("onestText")}</a></p>
      
     </footer>
   );
