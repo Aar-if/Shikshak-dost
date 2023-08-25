@@ -9,7 +9,9 @@ import Footer from "./Footer";
 function SplashScreen() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
   const storyApp = () => {
     navigate("/home");
   };
