@@ -22,7 +22,7 @@ const SunbirdVideoPlayer = (props) => {
         `${process.env.PUBLIC_URL}/players/project-sunbird/content-player`
       );
     } else {
-      if (props?.url.startsWith("http")) {
+      if (props?.url.startsWith("http://")) {
         // Open http links in a new tab/window
         window.open(props.url, "_blank");
       } else {
