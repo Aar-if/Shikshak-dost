@@ -27,7 +27,7 @@ function Header() {
             textAlign: "center",
             paddingRight: "5%",
             fontFamily: "auto",
-            fontSize: "23px"
+            fontSize: "25px"
           }}
         >
           <span>{t("welcome")}</span>
