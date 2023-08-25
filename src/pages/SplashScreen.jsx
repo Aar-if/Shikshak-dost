@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import styles from "./SplashScreen.module.css";
 import { Button, ButtonGroup } from "@chakra-ui/react";
