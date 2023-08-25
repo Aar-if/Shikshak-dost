@@ -7,7 +7,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Button } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-
+import { FaUndo } from 'react-icons/fa';
 function App() {
   const [story, setStory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(
@@ -88,6 +88,12 @@ function App() {
   });
 
  
+  const resetFilters = () => {
+    setSelectedCategory("all");
+    setLanguage("all");
+    setAgeGroup("all");
+    setActor("all");
+  };
 // console.log("categoryFilter",categoryFilter)
   return (
     <div>
@@ -153,6 +159,12 @@ function App() {
               <option value="Parent">{t("parent")}</option>
               <option value="Teacher">{t("teacher")}</option>
             </select> */}
+&nbsp;&nbsp;
+<button onClick={resetFilters}>
+  <FaUndo /> 
+</button>
+
+
           </div>
           {filteredStory.length === 0 ? (
             <p>No data available for the selected filters.</p>

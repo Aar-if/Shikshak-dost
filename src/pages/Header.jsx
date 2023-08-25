@@ -4,7 +4,7 @@ import imagePath from "../assets/TSHeader.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ChakraProvider, Select } from "@chakra-ui/react";
-
+import { FaArrowLeft } from 'react-icons/fa'; 
 function Header() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -27,14 +27,15 @@ function Header() {
             textAlign: "center",
             paddingRight: "5%",
             fontFamily: "auto",
-            fontSize: "25px"
+            fontSize: "20px"
           }}
         >
           <span>{t("welcome")}</span>
         </div>
         <div className={styles.menuDiv}>
-          {/* <button onClick={() => navigate("/")}>🏠</button> */}
-        </div>
+        <button onClick={() => navigate(-1)}>
+      <FaArrowLeft /> 
+    </button>        </div>
         <div style={{paddingRight: "8px"}}>
           <Select
             style={{ marginRight: "22px" }}
