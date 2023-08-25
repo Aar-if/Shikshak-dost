@@ -27,7 +27,7 @@ function StoryDetatils() {
         }}
       >
      <div className="player-header">
-  <h1>{state?.product?.attributes?.Provider}</h1>
+  <h1>{state?.product?.attributes?.Title}</h1>
   <button
     className="player-button"
     onClick={() => {

@@ -60,7 +60,7 @@ const ProductCard = ({ product }) => {
             alt="Caffe Latte"
           />
 
-          <Stack>
+<Stack>
             <CardBody>
               {isLoading ? (
                 <SkeletonText
@@ -71,15 +71,39 @@ const ProductCard = ({ product }) => {
                 />
               ) : (
                 <>
-                  <Heading size="sm">{product?.attributes?.Actor}</Heading>
-                  <Text py="2">{product?.attributes?.Age}</Text>
-                  <Text py="2">{product?.attributes?.Language}</Text>
-                  <Text py="2">{product?.attributes?.Theme}</Text>
+                   <span className="age-info1">
+  <Text  py="2">{product?.attributes?.Title}</Text>
+ 
+</span>
+                  <span className="age-info">
+  <Text py="2">Recommended Age:</Text>
+  <Text py="2" className="age-info2">{product?.attributes?.Age}</Text>
+</span>
+
+
+<span className="age-info">
+  <Text py="2">Language:</Text>
+  <Text py="2" className="age-info2"> {product?.attributes?.Language}</Text>
+</span>
+<span className="age-info">
+  <Text py="2">Type:</Text>
+  <Text py="2" className="age-info2">{product?.attributes?.Theme}</Text>
+</span>
+<span className="age-info">
+  <Text py="2">Pubished By:</Text>
+  <Text py="2" className="age-info2">{product?.attributes?.Provider}</Text>
+</span>
+{/* <span className="age-info">
+  
+  <Text py="2" className="age-info2">{product?.attributes?.Description}</Text>
+</span> */}
+<Text py="2" className="age-info3">{product?.attributes?.Description}</Text>
+                 
                 </>
               )}
             </CardBody>
 
-            <CardFooter>
+            {/* <CardFooter>
               {isLoading ? (
                 <SkeletonText
                   mt="2"
@@ -90,7 +114,7 @@ const ProductCard = ({ product }) => {
               ) : (
                 <Heading size="sm"> {product?.attributes?.Provider}</Heading>
               )}
-            </CardFooter>
+            </CardFooter> */}
           </Stack>
         </Card>
       )}
