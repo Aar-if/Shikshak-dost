@@ -72,7 +72,7 @@ const ProductCard = ({ product }) => {
               ) : (
                 <>
                    <span className="age-info1">
-  <Text  py="2">{product?.attributes?.Title}</Text>
+  <Text  py="2" className="age-info5">{product?.attributes?.Title}</Text>
  
 </span>
                   <span className="age-info">
