@@ -47,24 +47,18 @@ function StoryDetatils() {
             />
           </div>
         )}
-        <div className="detailsBox">
-          <div>
-            {<img
-           //   src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
-            src={`https://onest-strapi.tekdinext.com`+ state?.product?.attributes?.image?.data?.attributes?.url}
+<div className="row">
+  <div className="column left-column">
+    <img src={`https://onest-strapi.tekdinext.com` + state?.product?.attributes?.image?.data?.attributes?.url} alt="Product Image" />
+  </div>
+  <div className="column right-column">
+    <b>Actor: {state?.product?.attributes?.Actor}</b>
+    <p>Language: {state?.product?.attributes?.Language}</p>
+    <p>Age: {state?.product?.attributes?.Age}</p>
+    <p>Theme: {state?.product?.attributes?.Theme}</p>
+  </div>
+</div>
 
-              style={{ width: "200px", height: "auto", marginRight: "50px" }}
-            /> }
-          </div>
-          <div>
-            <b style={{ marginTop: "" }}>
-              Actor: {state?.product?.attributes?.Actor}
-            </b>
-            <p>Language: {state?.product?.attributes?.Language}</p>
-            <p>Age: {state?.product?.attributes?.Age}</p>
-            <p>Theme: {state?.product?.attributes?.Theme}</p>
-          </div>
-        </div>
       </div>
     </div>
   );
