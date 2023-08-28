@@ -27,18 +27,16 @@ const SunbirdVideoPlayer = (props) => {
         `${process.env.PUBLIC_URL}/players/project-sunbird/content-player`
       );
     } 
-    // else {
-    //   if (props?.url.startsWith("http://")) {
-    //     // Open http links in a new tab/window
-    //     window.open(props.url, "_blank");
-    //     navigate("/");
-    //   } else {
-    //     setUrl(props?.url.replace("watch?v=", "embed/"));
-    //   }
-    // }
     else {
-      setUrl(props?.url.replace("watch?v=", "embed/"));
+      if (props?.url.startsWith("http://")) {
+        // Open http links in a new tab/window
+        window.open(props.url, "_blank");
+        navigate("/home");
+      } else {
+        setUrl(props?.url.replace("watch?v=", "embed/"));
+      }
     }
+  
   }, [props?.mediaType]);
 
   if (url) {
@@ -56,12 +54,15 @@ const SunbirdVideoPlayer = (props) => {
         width="100%"
         height="500vh"
         name={JSON.stringify(props)}
-        src={`${url}?autoplay=1`}
+        src={`${url}?autoplay=1#toolbar=0`}
         allow="autoplay; fullscreen"
         onLoad={handleIframeLoad}
-        credentialless="true"
         style={{ display: isLoading ? 'none' : 'block' }}
       />
+
+
+
+      
     </div>
   
         );
