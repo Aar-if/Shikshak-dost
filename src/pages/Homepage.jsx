@@ -83,7 +83,6 @@ function App() {
       ageGroup === "all" || item?.attributes?.Age == ageGroup;
     const actorFilter = actor === "all" || item?.attributes?.Actor === actor;
 
-
     return categoryFilter && languageFilter && ageGroupFilter && actorFilter;
   });
 
