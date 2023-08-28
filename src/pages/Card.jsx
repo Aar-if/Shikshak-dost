@@ -39,7 +39,6 @@ const ProductCard = ({ product }) => {
         </Box>
       ) : (
         <Card
-          className="cardDiv"
           onClick={() => {
             navigate("/storyDetails", {
               state: {
@@ -52,11 +51,12 @@ const ProductCard = ({ product }) => {
           variant="outline"
         >
           <Image
+            className={styles.imgDiv}
             objectFit="cover"
-            maxW={{ base: "50%", sm: "200px" }}
+            maxW={{ base: "50%", sm: "230px" }}
             // src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
             src={`https://onest-strapi.tekdinext.com`+ product?.attributes?.image?.data?.attributes?.url}
-            alt="Caffe Latte"
+            alt="img is not there"
           />
 
 <Stack>

@@ -50,8 +50,10 @@ function StoryDetatils() {
         <div className="detailsBox">
           <div>
             {<img
-              src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
-              style={{ width: "50px", height: "auto", marginRight: "50px" }}
+           //   src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
+            src={`https://onest-strapi.tekdinext.com`+ state?.product?.attributes?.image?.data?.attributes?.url}
+
+              style={{ width: "200px", height: "auto", marginRight: "50px" }}
             /> }
           </div>
           <div>
