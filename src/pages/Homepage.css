@@ -157,3 +157,62 @@
   margin-left: 5%;
 
 }
+.container {
+  display: grid;
+  align-items: center; 
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 0; /* Remove the gap between columns */
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.text {
+  font-size: 18px;
+  margin-left: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px; 
+  padding-top: 10px;/* Negative margin to counteract column padding */
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box; 
+}
+
+.left-column {
+  flex: 1;
+  max-width: 40%;
+  margin-left: -10%; 
+}
+
+.right-column {
+  flex: 1;
+  max-width: 60%; 
+  text-align: left;
+  margin-left: -10%;
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Clear floats */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}

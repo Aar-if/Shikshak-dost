@@ -70,10 +70,6 @@ const SunbirdVideoPlayer = (props) => {
         onLoad={handleIframeLoad}
         style={{ display: isLoading ? 'none' : 'block' }}
       />
-
-
-
-      
     </div>
   
         );
