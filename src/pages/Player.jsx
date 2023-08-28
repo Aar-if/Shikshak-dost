@@ -28,13 +28,24 @@ const SunbirdVideoPlayer = (props) => {
       );
     } 
     else {
-      if (props?.url.startsWith("http://")) {
-        // Open http links in a new tab/window
-        window.open(props.url, "_blank");
+      // if (props?.url.startsWith("http://")) {
+      //   // Open http links in a new tab/window
+      //   window.open(props.url, "_blank");
+      //   navigate("/home");
+      // } 
+
+      // for embeded the url with upload path
+      if(props?.url.startsWith("/uploads")){
+        let  url = "https://onest-strapi.tekdinext.com" + props?.url;
+        window.open(url, "_blank");
         navigate("/home");
-      } else {
+     // setUrl(url.replace("watch?v=", "embed/"));
+       }
+      
+       else
+       {
         setUrl(props?.url.replace("watch?v=", "embed/"));
-      }
+       }
     }
   
   }, [props?.mediaType]);
