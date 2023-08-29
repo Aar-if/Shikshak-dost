@@ -105,10 +105,9 @@ function App() {
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-around",
+              justifyContent: "space-evenly",
             }}
           >
-            {/* Filter dropdowns */}
             <select
               className="filters"
               value={ageGroup}
@@ -130,11 +129,7 @@ function App() {
               <option value="all">{t("language")}</option>
               <option value="English">English</option>
               <option value="Hindi">हिंदी</option>
-              {/* <option value="Gujarati">Gujarati</option>
-              <option value="Assamese">Assamese</option>
-              <option value="Tamil">Tamil</option>
-              <option value="Marathi">Marathi</option>
-              <option value="Kannada">Kannada</option> */}
+            
             </select>
             <select
               className="filters"
@@ -146,48 +141,36 @@ function App() {
 
               <option value="Audio">{t("audio")}</option>
               <option value="Read">{t("read")}</option>
-              {/* <option value="Other">{t("other")}</option> */}
             </select>
-            {/* <select
-              className="filters"
-              value={actor}
-              onChange={(e) => setActor(e.target.value)}
-            >
-              <option value="all">{t("actor")}</option>
-              <option value="Student">{t("student")}</option>
-              <option value="Parent">{t("parent")}</option>
-              <option value="Teacher">{t("teacher")}</option>
-            </select> */}
-&nbsp;&nbsp;
-<button onClick={resetFilters}>
+           <button onClick={resetFilters}>
   <FaUndo /> 
 </button>
 
 
           </div>
-          {filteredStory.length === 0 ? (
-            <p>No data available for the selected filters.</p>
-          ) : (
-            filteredStory.map((product, index) => (
-              <div key={index}>
-                <ProductCard product={product} />
-                {/* <Button
-                  className="viewButton"
-                  variant="solid"
-                  colorScheme="blue"
-                  onClick={() => {
-                    navigate("/storyDetails", {
-                      state: {
-                        product: product,
-                      },
-                    });
-                  }}
-                >
-                  View Story
-                </Button> */}
-              </div>
-            ))
-          )}
+            {filteredStory.length === 0 ? (
+              <p>No data available for the selected filters.</p>
+            ) : (
+              filteredStory.map((product, index) => (
+                <div key={index}>
+                  <ProductCard product={product} />
+                  {/* <Button
+                    className="viewButton"
+                    variant="solid"
+                    colorScheme="blue"
+                    onClick={() => {
+                      navigate("/storyDetails", {
+                        state: {
+                          product: product,
+                        },
+                      });
+                    }}
+                  >
+                    View Story
+                  </Button> */}
+                </div>
+              ))
+            )}
         </div>
       </div>
       <div>

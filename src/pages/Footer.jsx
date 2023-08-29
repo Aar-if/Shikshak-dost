@@ -6,9 +6,17 @@ function Footer() {
   const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
-      <p><a className={styles.pointer}  href="https://www.tekdi.net/">{t("footerText")} ❤️ {t("footerText1")} </a> | <a className={styles.pointer} href="https://onest.network/">{t("onestText")}</a></p>
-     
-    </footer>
+    <p>
+      <a className={styles.pointer} href="https://www.tekdi.net/" target="_blank" rel="noopener noreferrer">
+        {t("footerText")} ❤️ {t("footerText1")}
+      </a>
+      {" | "}
+      <a className={styles.pointer} href="https://onest.network/" target="_blank" rel="noopener noreferrer">
+        {t("onestText")}
+      </a>
+    </p>
+  </footer>
+  
   );
 }
 

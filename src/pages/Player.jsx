@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
+
 const SunbirdVideoPlayer = (props) => {
   const [url, setUrl] = React.useState();
   const navigate = useNavigate();
@@ -8,6 +9,7 @@ const SunbirdVideoPlayer = (props) => {
   const handleIframeLoad = () => {
     setIsLoading(false);
   };
+  
   React.useEffect(() => {
     if (props?.mimeType === "application/pdf") {
       setUrl(`${process.env.PUBLIC_URL}/players/pdf`);
@@ -27,14 +29,14 @@ const SunbirdVideoPlayer = (props) => {
         `${process.env.PUBLIC_URL}/players/project-sunbird/content-player`
       );
     } else {
-      // if (props?.url.startsWith("http://")) {
-      //   // Open http links in a new tab/window
-      //   window.open(props.url, "_blank");
-      //   navigate("/home");
-      // }
+      if (props?.url.startsWith("http://")) {
+        // Open http links in a new tab/window
+        window.open(props.url, "_blank");
+        navigate("/home");
+      }
 
       // for embeded the url with upload path
-      if (props?.url.startsWith("/uploads")) {
+     else if (props?.url.startsWith("/uploads")) {
         let url = "https://onest-strapi.tekdinext.com" + props?.url;
 
         window.open(url, "_blank");
@@ -72,6 +74,7 @@ const SunbirdVideoPlayer = (props) => {
           onLoad={handleIframeLoad}
           style={{ display: isLoading ? "none" : "block" }}
         />
+
       </div>
     );
   } else {

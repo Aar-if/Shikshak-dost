@@ -24,7 +24,7 @@
 
 .filters {
   background-color: rgb(255, 255, 255);
-  width: 100px;
+  width: auto;
   height: auto;
   border: 1px solid #7c7c7c;
   border-radius: 5px;
@@ -36,22 +36,12 @@
   margin-top: 5px;
 }
 
-.player-header {
+/* .player-header {
   height: 55px;
   background-color: #024f9d;
   color: white;
-}
+} */
 
-.player-button {
-  position: relative;
-  color: white;
-  justify-content: center;
-  border: 1px solid white;
-  width: 40px;
-  border-radius: 2px;
-  margin-left: auto;
-  margin-right: 1%;
-}
 
 .detailsBox {
   margin-top: 20px;
@@ -74,8 +64,9 @@
 
 }
 
+
 /* .age-info1 {
-  display: block;
+  display: block; 
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -98,65 +89,41 @@
   text-overflow: ellipsis; */
 }
 
-/*@media screen and (max-width: 480px) {
-
-  .age-info5 {
-    max-width: 60%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-}
-
-
-@media screen and (min-width:481px) and  (max-width : 768px) {
-
-  .age-info5 {
-    max-width: 70%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-}
-
-@media screen and (min-width:769px) and  (max-width : 992px) {
-
-  .age-info5 {
-    max-width: 80%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-}
-
-
-@media screen and (min-width:993px) and  (max-width : 1000px) {
-
-  .age-info5 {
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-} */
 .age-info > * {
   margin-right: 10px; /* Add some spacing between the Text elements */
 }
 .player-header {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  background-color: #024f9d;
+  color: white;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5%;
 }
 
 .player-header h1 {
-  text-align: center; 
-  margin-left: 5%;
-
+  text-align: center;
 }
+
+.player-button {
+  position: relative;
+  color: white;
+  justify-content: center;
+  border: 1px solid white;
+  width: 40px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: 1%;
+}
+
+
 .container {
   display: grid;
   align-items: center; 
@@ -177,12 +144,11 @@ img {
   box-sizing: border-box;
 }
 
-/* Create two equal columns that floats next to each other */
 .row {
   display: flex;
   flex-wrap: wrap;
   margin: -10px; 
-  padding-top: 10px;/* Negative margin to counteract column padding */
+  padding-top: 10px;
 }
 
 .column {
@@ -216,3 +182,4 @@ img {
   display: table;
   clear: both;
 }
+
