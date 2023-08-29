@@ -36,7 +36,7 @@ const SunbirdVideoPlayer = (props) => {
       // for embeded the url with upload path
       if (props?.url.startsWith("/uploads")) {
         let url = "https://onest-strapi.tekdinext.com" + props?.url;
-        console.log(url);
+
         window.open(url, "_blank");
         navigate("/home");
         // setUrl(url.replace("watch?v=", "embed/"));
