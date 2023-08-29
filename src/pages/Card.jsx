@@ -39,83 +39,63 @@ const ProductCard = ({ product }) => {
         </Box>
       ) : (
         <Card
-          onClick={() => {
-            navigate("/storyDetails", {
-              state: {
-                product: product,
-              },
-            });
-          }}
-          direction={{ base: "row", sm: "row" }}
-          overflow="hidden"
-          variant="outline"
-        >
-          <Image
-            className={styles.imgDiv}
-            objectFit="cover"
-            maxW={{ base: "50%", sm: "230px" }}
-            // src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
-            src={`https://onest-strapi.tekdinext.com`+ product?.attributes?.image?.data?.attributes?.url}
-            alt="img is not there"
-          />
+        onClick={() => {
+          navigate("/storyDetails", {
+            state: {
+              product: product,
+            },
+          });
+        }}
+        display="flex"
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        borderWidth="1px"
+        borderRadius="lg"
+        borderColor="gray.200"
+       
 
-<Stack>
-            <CardBody>
-              {isLoading ? (
-                <SkeletonText
-                  mt="2"
-                  noOfLines={2}
-                  spacing="2"
-                  skeletonHeight="2"
-                />
-              ) : (
-                <>
-                   <span className="age-info1">
-  <Text  py="2" className="age-info5">{product?.attributes?.Title}</Text>
- 
-</span>
-                  <span className="age-info">
-  <Text py="2">Recommended Age:</Text>
-  <Text py="2" className="age-info2">{product?.attributes?.Age}</Text>
-</span>
-
-
-<span className="age-info">
-  <Text py="2">Language:</Text>
-  <Text py="2" className="age-info2"> {product?.attributes?.Language}</Text>
-</span>
-<span className="age-info">
-  <Text py="2">Type:</Text>
-  <Text py="2" className="age-info2">{product?.attributes?.Theme}</Text>
-</span>
-<span className="age-info">
-  <Text py="2">Published By:</Text>
-  <Text py="2" className="age-info2">{product?.attributes?.Provider}</Text>
-</span>
-{/* <span className="age-info">
-  
-  <Text py="2" className="age-info2">{product?.attributes?.Description}</Text>
-</span> */}
-<Text py="2" className="age-info3">{product?.attributes?.Description}</Text>
-                 
-                </>
-              )}
-            </CardBody>
-
-            {/* <CardFooter>
-              {isLoading ? (
-                <SkeletonText
-                  mt="2"
-                  noOfLines={1}
-                  spacing="2"
-                  skeletonHeight="2"
-                />
-              ) : (
-                <Heading size="sm"> {product?.attributes?.Provider}</Heading>
-              )}
-            </CardFooter> */}
+        _hover={{
+          borderColor: "blue.400",
+        }}
+        cursor="pointer"
+      >
+  <Image
+    src={`https://onest-strapi.tekdinext.com` + product?.attributes?.image?.data?.attributes?.url}
+    alt="Image not available"
+    maxW={{ base: "100%", sm: "230px" }}
+    
+    objectFit="cover"
+    p="10px" 
+  />     
+        <Stack p={4} spacing={4} align="flex-start">
+          <Text
+            fontSize="xl"
+            fontWeight="bold"
+            fontFamily="YourPreferredFont, sans-serif"
+            color="black.500"
+          >
+            {product?.attributes?.Title
+              ? product.attributes.Title.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, c => c.toUpperCase())
+              : "Title not available"}
+          </Text>
+          <Stack spacing={0}>
+            <Text fontWeight="200">Recommended Age: {product?.attributes?.Age || "N/A"}</Text> 
           </Stack>
-        </Card>
+          <Stack spacing={2}>
+            <Text fontWeight="200">Language: {product?.attributes?.Languag}</Text>
+          </Stack>
+          <Stack spacing={2}>
+            <Text fontWeight="200" >Type: {product?.attributes?.Theme || "N/A"}</Text>
+          </Stack>
+          <Stack spacing={2}>
+            <Text fontWeight="200">Published By: {product?.attributes?.Provider || "N/A"}</Text>
+          </Stack>
+          <Text fontWeight="200">
+            {product?.attributes?.Description}
+          </Text>
+          {/* Add other fields as needed */}
+        </Stack>
+      </Card>
       )}
     </div>
   );
