@@ -127,7 +127,7 @@
 .container {
   display: grid;
   align-items: center; 
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns:0.5fr 1fr;
   column-gap: 0; /* Remove the gap between columns */
 }
 
@@ -206,6 +206,7 @@ img {
   flex: 1;
   background-color: #fff;
   padding: 20px;
+  line-height: 15px;
 }
 
 .right-column b {
