@@ -3,7 +3,6 @@ pipeline {
   agent any
 
   stages {
-     stages {
     stage('Clean workspace') {
       steps{
         script { 
@@ -60,4 +59,4 @@ pipeline {
   }
 }
 }
-}
+
