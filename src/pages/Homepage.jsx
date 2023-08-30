@@ -101,53 +101,72 @@ function App() {
       </div>
       <div className="App">
         <div className="product-container" style={{ marginTop: "70px" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <select
-              className="filters"
-              value={ageGroup}
-              onChange={(e) => setAgeGroup(e.target.value)}
-            >
-              <option value="all">{t("age")}</option>
+      
+        <div 
+  style={{
+    position: "sticky",
+    top: "70px",
+    zIndex: 1000,
+    background: "#fff",
+    padding: "10px", 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center", 
+  }}
+>
+  <div style={{ display: "flex" }}>
+    <div style={{ marginRight: "10px" }}>
+      <select
+        className="filters"
+        value={ageGroup}
+        onChange={(e) => setAgeGroup(e.target.value)}
+      >
+          <option value="all">{t("age")}</option>
               <option value={1}>{t("1")} </option>
               <option value={2}>{t("2")}</option>
               <option value={3}>{t("3")}</option>
               <option value={4}>{t("4")}</option>
               <option value={5}>{t("5")}</option>
-    
-            </select>
-            <select
-              className="filters"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-            >
-              <option value="all">{t("language")}</option>
+      </select>
+    </div>
+  
+    <div style={{ marginRight: "10px" }}>
+      <select
+        className="filters"
+        value={language}
+        onChange={(e) => setLanguage(e.target.value)}
+      >
+          <option value="all">{t("language")}</option>
               <option value="English">English</option>
               <option value="Hindi">हिंदी</option>
-            
-            </select>
-            <select
-              className="filters"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              <option value="all">{t("type")}</option>
+      </select>
+    </div>
+  
+    <div style={{ marginRight: "10px" }}>
+      <select
+        className="filters"
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+      >
+       <option value="all">{t("type")}</option>
               <option value="Video">{t("video")}</option>
 
               <option value="Audio">{t("audio")}</option>
               <option value="Read">{t("read")}</option>
-            </select>
-           <button onClick={resetFilters}>
-  <FaUndo /> 
-</button>
+      </select>
+    </div>
+  </div>
+  
+  <div style={{    marginLeft: "5px"}}>
+    <button onClick={resetFilters}>
+      <FaUndo /> 
+    </button>
+  </div>
+  
+</div>
 
 
-          </div>
+
             {filteredStory.length === 0 ? (
               <p>No data available for the selected filters.</p>
             ) : (

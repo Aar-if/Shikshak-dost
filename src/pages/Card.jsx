@@ -79,18 +79,18 @@ const ProductCard = ({ product }) => {
               : "Title not available"}
           </Text>
           <Stack spacing={0}>
-            <Text fontWeight="200">Recommended Age: {product?.attributes?.Age || "N/A"}</Text> 
+            <Text style={{color: "black",fontSize: "16px"}}>Recommended Age: {product?.attributes?.Age || "N/A"}</Text> 
           </Stack>
           <Stack spacing={2}>
-            <Text fontWeight="200">Language: {product?.attributes?.Languag}</Text>
+            <Text style={{color: "black",fontSize: "16px"}}>Language: {product?.attributes?.Language}</Text>
           </Stack>
           <Stack spacing={2}>
-            <Text fontWeight="200" >Type: {product?.attributes?.Theme || "N/A"}</Text>
+            <Text style={{color: "black",fontSize: "16px"}}>Type: {product?.attributes?.Theme || "N/A"}</Text>
           </Stack>
           <Stack spacing={2}>
-            <Text fontWeight="200">Published By: {product?.attributes?.Provider || "N/A"}</Text>
+            <Text style={{color: "black",fontSize: "16px"}}>Published By: {product?.attributes?.Provider || "N/A"}</Text>
           </Stack>
-          <Text fontWeight="200">
+          <Text style={{color: "black",fontSize: "16px"}}>
             {product?.attributes?.Description}
           </Text>
           {/* Add other fields as needed */}
