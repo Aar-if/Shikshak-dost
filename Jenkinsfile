@@ -18,7 +18,7 @@ pipeline {
     
     stage('BuildingCode') {
       steps{
-      dir('/var/lib/jenkins/workspace/teacherapp-shiksha/Shikshak-dost'){
+      dir('/var/lib/jenkins/workspace/teacherapp-shiksha'){
         sh "rm -rf node_modules"
         sh "rm -rf package-lock.json"
         sh "ls"
@@ -30,7 +30,7 @@ pipeline {
     }
     stage('Deployment') {
       steps{
-      dir ('/var/lib/jenkins/workspace/teacherapp-shiksha/Shikshak-dost/dist/') { 
+      dir ('/var/lib/jenkins/workspace/teacherapp-shiksha/dist/') { 
          script {
                    
                     def awsCliCmd = 'aws'
@@ -41,9 +41,9 @@ pipeline {
                     //sh "aws configure set default.region ap-south-1"
        
                     def bucketName = 'onestbucket'  
-                    sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/Shikshak-dost/dist/index.html s3://${bucketName}/"
-                     sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/Shikshak-dost/dist/vite.svg s3://${bucketName}/"
-                     sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/Shikshak-dost/dist/assets/ s3://${bucketName}/assets/ --recursive"
+                    sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/dist/index.html s3://${bucketName}/"
+                     sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/dist/vite.svg s3://${bucketName}/"
+                     sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/dist/assets/ s3://${bucketName}/assets/ --recursive"
         }
       }
     }
