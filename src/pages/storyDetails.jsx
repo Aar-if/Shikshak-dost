@@ -28,8 +28,8 @@ function StoryDetatils() {
       >
    <div className="player-header">
   <div className="title-wrapper">
-    <h1>{state?.product?.attributes?.Title}</h1>
-    <h1>{state?.product?.attributes?.Provider}</h1>
+    <h1 style={{fontSize:"18px"}}>{state?.product?.attributes?.Title}</h1>
+    <h1 style={{fontSize:"14px",fontStyle: "italic"}}>{state?.product?.attributes?.Provider}</h1>
   </div>
   <button
     className="player-button"
@@ -51,17 +51,16 @@ function StoryDetatils() {
             />
           </div>
         )}
-<div className="row">
-  <div className="column left-column">
-    <img src={`https://onest-strapi.tekdinext.com` + state?.product?.attributes?.image?.data?.attributes?.url} alt="Product Image" />
-  </div>
-  <div className="column right-column">
+ <div class="container">
+    <div class="left-column">
+    <img src={`https://onest-strapi.tekdinext.com` + state?.product?.attributes?.image?.data?.attributes?.url} alt="Product Image" />    </div>
+    <div class="right-column">
     <b>Actor: {state?.product?.attributes?.Actor}</b>
     <p>Language: {state?.product?.attributes?.Language}</p>
     <p>Age: {state?.product?.attributes?.Age}</p>
     <p>Theme: {state?.product?.attributes?.Theme}</p>
+    </div>
   </div>
-</div>
 
       </div>
     </div>
