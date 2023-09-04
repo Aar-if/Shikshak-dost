@@ -8,6 +8,8 @@ import Footer from "./Footer";
 import { Button } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { FaUndo } from 'react-icons/fa';
+import ReactPaginate from 'react-paginate';
+
 function App() {
   const [story, setStory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(
@@ -20,6 +22,9 @@ function App() {
     localStorage.getItem("ageGroup") || "all"
   );
   const [actor, setActor] = useState(localStorage.getItem("actor") || "all");
+  const [currentPage, setCurrentPage] = useState(0); // Current page for pagination
+
+  const itemsPerPage = 10; // Number of items per page
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -38,7 +43,6 @@ function App() {
         console.log(error);
       });
   }, []);
-
 
   useEffect(() => {
     if (selectedCategory === "all") {
@@ -86,14 +90,24 @@ function App() {
     return categoryFilter && languageFilter && ageGroupFilter && actorFilter;
   });
 
- 
+  // Slice the filteredStory array based on pagination
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedStory = filteredStory.slice(startIndex, endIndex);
+  const pageCount = Math.ceil(filteredStory.length / itemsPerPage);
+  const breakLabel = pageCount > 5 ? "..." : null;
+  // Function to handle page change
+  const handlePageClick = (selected) => {
+    setCurrentPage(selected.selected);
+  };
+
   const resetFilters = () => {
     setSelectedCategory("all");
     setLanguage("all");
     setAgeGroup("all");
     setActor("all");
   };
-// console.log("categoryFilter",categoryFilter)
+
   return (
     <div>
       <div>
@@ -101,95 +115,93 @@ function App() {
       </div>
       <div className="App">
         <div className="product-container" style={{ marginTop: "70px" }}>
-      
-        <div 
-  style={{
-    position: "sticky",
-    top: "70px",
-    zIndex: 1000,
-    background: "#fff",
-    padding: "10px", 
-    display: "flex", 
-    justifyContent: "center", 
-    alignItems: "center", 
-  }}
->
-  <div style={{ display: "flex" }}>
-    <div style={{ marginRight: "10px" }}>
-      <select
-        className="filters"
-        value={ageGroup}
-        onChange={(e) => setAgeGroup(e.target.value)}
-      >
-          <option value="all">{t("age")}</option>
-              <option value={1}>{t("1")} </option>
-              <option value={2}>{t("2")}</option>
-              <option value={3}>{t("3")}</option>
-              <option value={4}>{t("4")}</option>
-              <option value={5}>{t("5")}</option>
-      </select>
-    </div>
-  
-    <div style={{ marginRight: "10px" }}>
-      <select
-        className="filters"
-        value={language}
-        onChange={(e) => setLanguage(e.target.value)}
-      >
-          <option value="all">{t("language")}</option>
-              <option value="English">English</option>
-              <option value="Hindi">हिंदी</option>
-      </select>
-    </div>
-  
-    <div style={{ marginRight: "10px" }}>
-      <select
-        className="filters"
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-      >
-       <option value="all">{t("type")}</option>
-              <option value="Video">{t("video")}</option>
+          <div
+            style={{
+              position: "sticky",
+              top: "70px",
+              zIndex: 1000,
+              background: "#fff",
+              padding: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ display: "flex" }}>
+              <div style={{ marginRight: "10px" }}>
+                <select
+                  className="filters"
+                  value={ageGroup}
+                  onChange={(e) => setAgeGroup(e.target.value)}
+                >
+                  <option value="all">{t("age")}</option>
+                  <option value={1}>{t("1")}</option>
+                  <option value={2}>{t("2")}</option>
+                  <option value={3}>{t("3")}</option>
+                  <option value={4}>{t("4")}</option>
+                  <option value={5}>{t("5")}</option>
+                </select>
+              </div>
 
-              <option value="Audio">{t("audio")}</option>
-              <option value="Read">{t("read")}</option>
-      </select>
-    </div>
-  </div>
-  
-  <div style={{    marginLeft: "5px"}}>
-    <button onClick={resetFilters}>
-      <FaUndo /> 
-    </button>
-  </div>
-  
-</div>
+              <div style={{ marginRight: "10px" }}>
+                <select
+                  className="filters"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                >
+                  <option value="all">{t("language")}</option>
+                  <option value="English">English</option>
+                  <option value="Hindi">हिंदी</option>
+                </select>
+              </div>
 
+              <div style={{ marginRight: "10px" }}>
+                <select
+                  className="filters"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                >
+                  <option value="all">{t("type")}</option>
+                  <option value="Video">{t("video")}</option>
+                  <option value="Audio">{t("audio")}</option>
+                  <option value="Read">{t("read")}</option>
+                </select>
+              </div>
+            </div>
 
+            <div style={{ marginLeft: "5px" }}>
+              <button onClick={resetFilters}>
+                <FaUndo />
+              </button>
+            </div>
+          </div>
 
-            {filteredStory.length === 0 ? (
-              <p>No data available for the selected filters.</p>
-            ) : (
-              filteredStory.map((product, index) => (
-                <div key={index}>
-                  <ProductCard product={product} />
-                  {/* <Button
-                    className="viewButton"
-                    variant="solid"
-                    colorScheme="blue"
-                    onClick={() => {
-                      navigate("/storyDetails", {
-                        state: {
-                          product: product,
-                        },
-                      });
-                    }}
-                  >
-                    View Story
-                  </Button> */}
-                </div>
-              ))
-            )}
+          {paginatedStory.length === 0 ? (
+            <p>No data available for the selected filters.</p>
+          ) : (
+            paginatedStory.map((product, index) => (
+              <div key={index}>
+                <ProductCard product={product} />
+              </div>
+            ))
+          )}
+
+          {/* Pagination */}
+          <div>
+          <ReactPaginate
+   previousLabel="<"
+   nextLabel=">"
+   breakLabel={breakLabel}
+   pageCount={pageCount}
+   marginPagesDisplayed={2}
+   pageRangeDisplayed={5}
+   onPageChange={handlePageClick}
+   containerClassName={"pagination"}
+   subContainerClassName={"pages pagination"}
+   activeClassName={"active"}
+/>
+          </div>
+          
         </div>
       </div>
       <div>

@@ -51,10 +51,10 @@ function StoryDetatils() {
             />
           </div>
         )}
- <div class="container">
-    <div class="left-column">
+ <div className="container">
+    <div className="left-column">
     <img src={`https://onest-strapi.tekdinext.com` + state?.product?.attributes?.image?.data?.attributes?.url} alt="Product Image" />    </div>
-    <div class="right-column">
+    <div className="right-column">
     <p> Actor: {state?.product?.attributes?.Actor}</p>
     <p>Language: {state?.product?.attributes?.Language}</p>
     <p>Age: {state?.product?.attributes?.Age}</p>
