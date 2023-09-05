@@ -1,6 +1,6 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-
+import PDFViewer from "./PDFViewer";
 
 const SunbirdVideoPlayer = (props) => {
   const [url, setUrl] = React.useState();
@@ -33,15 +33,10 @@ const SunbirdVideoPlayer = (props) => {
         // Open http links in a new tab/window
         window.open(props.url, "_blank");
         navigate("/home");
-      }
-
-      // for embeded the url with upload path
-     else if (props?.url.startsWith("/uploads")) {
+      } else if (props?.url.startsWith("/uploads")) {
         let url = "https://onest-strapi.tekdinext.com" + props?.url;
-
         window.open(url, "_blank");
         navigate("/home");
-        // setUrl(url.replace("watch?v=", "embed/"));
       } else {
         setUrl(props?.url.replace("watch?v=", "embed/"));
       }
@@ -49,40 +44,61 @@ const SunbirdVideoPlayer = (props) => {
   }, [props?.mediaType]);
 
   if (url) {
-    return (
-      <div>
-        {isLoading && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              minHeight: "100vh",
-              fontSize: "25px",
-            }}
-          >
-            🌀 Loading...
-          </div>
-        )}
-        <iframe
+    // Get the file extension from the URL
+    const fileExtension = url.split('.').pop().toLowerCase();
+
+    if (fileExtension === 'pdf') {
+      return (
+        <div>
+          {/* {isLoading && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "100vh",
+                fontSize: "25px",
+              }}
+            >
+              🌀 Loading...
+            </div>
+          )} */}
+          <PDFViewer 
           id="preview"
-          width="100%"
-          height="500vh"
-          name={JSON.stringify(props)}
-          src={`${url}?autoplay=1#toolbar=0`}
           allow="autoplay; fullscreen"
           onLoad={handleIframeLoad}
-          style={{ display: isLoading ? "none" : "block" }}
-        />
-
-      </div>
-    );
+          url={url}  />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {isLoading && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "100vh",
+                fontSize: "25px",
+              }}
+            >
+              🌀 Loading...
+            </div>
+          )}
+          <iframe
+            id="preview"
+            width="100%"
+            height="500vh"
+            name={JSON.stringify(props)}
+            src={`${url}?autoplay=1#toolbar=0`}
+            allow="autoplay; fullscreen"
+            onLoad={handleIframeLoad}
+          />
+        </div>
+      );
+    }
   } else {
-    //     useEffect(() => {
-    // navigate("/");}, [
-
-    // ]);
-
     return <h2>{`${props?.mimeType} this mime type not compatible`}</h2>;
   }
 };
