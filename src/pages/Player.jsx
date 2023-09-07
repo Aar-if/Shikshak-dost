@@ -31,7 +31,7 @@ const SunbirdVideoPlayer = (props) => {
     } else {
       if (props?.url.startsWith("http://")) {
         // Open http links in a new tab/window
-        window.open(props.url, "blank");
+        window.open(props.url, "_blank");
         navigate("/home");
       } else if (props?.url.startsWith("/uploads")) {
         let url = "https://onest-strapi.tekdinext.com" + props?.url;
