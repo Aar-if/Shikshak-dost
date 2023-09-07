@@ -31,16 +31,18 @@ const PDFViewer = (url) => {
   }
 
   return (
-    <>
+   
+    <div>
+      <div className={style.Example__container}>
+        <div className={style.Example__container__document}>
+          <Document
+          className={style.docWidth}
+          file={url} onLoadSuccess={onDocumentLoadSuccess}>
+          <Page width={50} scale={7}  className={style.page} pageNumber={pageNumber} />
+          </Document>
+        </div>
+      </div>
       <div>
-        <Document
-          className={style.documentCss}
-          file={url}
-          onLoadSuccess={onDocumentLoadSuccess}
-        >
-          <Page className={style.page} pageNumber={pageNumber} />
-        </Document>
-        <div>
           <div>
             Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
           </div>
@@ -64,7 +66,6 @@ const PDFViewer = (url) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

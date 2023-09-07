@@ -188,18 +188,20 @@ function App() {
 
           {/* Pagination */}
           <div>
-          <ReactPaginate
-   previousLabel="<"
-   nextLabel=">"
-   breakLabel={breakLabel}
-   pageCount={pageCount}
-   marginPagesDisplayed={2}
-   pageRangeDisplayed={5}
-   onPageChange={handlePageClick}
-   containerClassName={"pagination"}
-   subContainerClassName={"pages pagination"}
-   activeClassName={"active"}
-/>
+          {pageCount > 1 && (
+  <ReactPaginate
+    previousLabel="<"
+    nextLabel=">"
+    breakLabel={breakLabel}
+    pageCount={pageCount}
+    marginPagesDisplayed={2}
+    pageRangeDisplayed={5}
+    onPageChange={handlePageClick}
+    containerClassName={"pagination"}
+    subContainerClassName={"pages pagination"}
+    activeClassName={"active"}
+  />
+)}
           </div>
           
         </div>
