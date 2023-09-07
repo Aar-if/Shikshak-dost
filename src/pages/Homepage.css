@@ -10,16 +10,10 @@
   flex-direction: column;
   margin-bottom: 50px;
 }
-@media (max-width: 768px) {
-  .product-card{
-    width: 600px;
-  }
-}
 .product-card {
   border: 1px solid #ccc;
   padding: 20px;
   text-align: center;
-  width: "auto",
 }
 
 .product-card img {
