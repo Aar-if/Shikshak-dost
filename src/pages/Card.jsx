@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
     // Simulate a delay to show loading effect
     const delay = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 100);
 
     return () => clearTimeout(delay);
   }, []);

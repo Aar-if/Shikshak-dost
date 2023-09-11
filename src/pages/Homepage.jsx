@@ -37,6 +37,9 @@ function App() {
       .then(function (response) {
         const obj = JSON.parse(response.data);
         const parsedData = obj.data;
+        // To Store story data in local
+        const jsonString = JSON.stringify(parsedData)
+        localStorage.setItem("storyList", jsonString);
         setStory(parsedData);
       })
       .catch((error) => {
@@ -76,8 +79,13 @@ function App() {
     }
   }, [actor]);
 
+  
+  // get data from the local storage
+  const storedData = localStorage.getItem('storyList');
+  const parsedArray = JSON.parse(storedData);
+  
   // Filter the story array based on selectedCategory
-  const filteredStory = story.filter((item) => {
+    const filteredStory = parsedArray.filter((item) => {
     const categoryFilter =
       selectedCategory === "all" ||
       item?.attributes?.Theme === selectedCategory;
