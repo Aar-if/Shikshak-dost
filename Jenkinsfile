@@ -34,12 +34,7 @@ pipeline {
          script {
                    
                     def awsCliCmd = 'aws'
-                    //sh "apt install awscli"
-                    // Set AWS credentials
-                    //sh "aws configure set aws_access_key_id AKIA6EXR534WHAGNPPCS"
-                    //sh "aws configure set aws_secret_access_key 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"
-                    //sh "aws configure set default.region ap-south-1"
-       
+                         
                     def bucketName = 'onestbucket'  
                     sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/dist/index.html s3://${bucketName}/"
                      sh "aws s3 cp /var/lib/jenkins/workspace/teacherapp-shiksha/dist/vite.svg s3://${bucketName}/"
