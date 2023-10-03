@@ -1,14 +1,12 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import { Flex } from "@chakra-ui/react";
-import { useState } from "react";
-// import Divider from "../components/Divider";
+import React, { useState } from "react";// import Divider from "../components/Divider";
 import Footer from "./FooterDiksha";
 import Footer2 from "./Footer";
 import HeaderDiksha from "./HeaderDiksha";
 import Messages from "./Message";
 import Axios from "axios";
 import Header from "./Header";
-
+import { Flex } from "@chakra-ui/react";
 const DikshachatbotUi = () => {
   let [messages, setMessages] = useState([
     { from: "computer", text: "Welcome to the Diksha AI Discovery Bot." },
@@ -28,44 +26,84 @@ const DikshachatbotUi = () => {
       return;
     }
     setMessages((old) => [...old, { from: "me", text: inputMessage }]);
-
+  
     setIsLoading(true); // Start loading
     //chatbot
     try {
       const requestBody = {
-          audioCode: "", 
+        audioCode: "",
       };
       const queryParams = {
-          searchType: "text",
-          searchString: inputMessage,
+        searchType: "text",
+        searchString: inputMessage,
       };
   
       const response = await Axios.post(
-          `https://aidiscovery.uniteframework.io/intent/openai/search`,
-          requestBody,
-          {
-              params: queryParams, 
-          }
+        `https://aidiscovery.uniteframework.io/intent/openai/search`,
+        requestBody,
+        {
+          params: queryParams,
+        }
       );
-  
-      const data = response.data.result.data.slice(0,3);
+      const data = response.data.result.data;
 
-      if (data) {
-        setInputMessage("");
-        const newMessages = data.map(item => ({
-          from: "computer",
-          text: `Title: ${item.title}\nType: ${item.type}\nLink: ${item.link}`
-        }));  
-        setMessages(oldMessages => [...oldMessages, ...newMessages]);
+      if (response) {
+        console.log('Received response');
+
+        console.log(response.data.result,data);
+        const botMessage = data;
+        if (data && Array.isArray(data)) {
+          const extractedData = data.slice(0, 3).map(item => {
+            const { title, link } = item;
+            return { title, link };
+          });
+  
+          let newMessages = [
+            ...messages,
+            { from: "computer", text: 'Based on your search, here are some diksha content...' }
+          ];
+  
+          extractedData.forEach(item => {
+  
+            const message = `${item.title}:`;
+            const linkText = (
+              <a
+                href={item.link}
+                style={{ color: 'blue' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.link}
+              </a>
+            );
+            newMessages = [
+              ...newMessages,
+              {
+                from: "computer", text: (
+                  <React.Fragment>
+                    {message}{linkText}
+                  </React.Fragment>
+                )
+              },
+            ];
+          });
+  
+          setMessages(newMessages);
+        } else {
+          console.error('API request failed');
+        }
+      } else {
+        console.error('API request failed');
       }
-      
-  } 
-   catch (error) {
+  
+      setInputMessage("");
+    } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setIsLoading(false); // Stop loading
     }
   };
+  
 
   return (
     // <><div className={styles.menuDiv}>
