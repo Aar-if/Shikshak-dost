@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { Avatar, Flex, Text } from "@chakra-ui/react";
-
+import { Avatar, Flex, Text, Box} from "@chakra-ui/react";
+const fontSize = "md";
 const Messages = ({ messages }) => {
+  
   const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
     useEffect(() => {
@@ -14,47 +15,46 @@ const Messages = ({ messages }) => {
   };
 
   return (
-    <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
-      {messages.map((item, index) => {
-        if (item.from === "me") {
-          return (
-            <Flex key={index} w="100%" justify="flex-end">
-              <Flex
-                bg="#61A7E9"
-                color="black"
-                minW="100px"
-                maxW="350px"
-                my="1"
-                p="3"
-              >
-                <Text>{item.text}</Text>
-              </Flex>
-            </Flex>
-          );
-        } else {
-          return (
-            <Flex key={index} w="100%">
-              <Avatar
-                name="Computer"
-                src="https://beta-ncfsaarathi.sunbird.org/assets/img/ncp/humanavatar.png"
-                bg="blue.300"
-              />
-              <Flex
-                bg="gray.100"
-                color="black"
-                minW="100px"
-                maxW="350px"
-                my="1"
-                p="3"
-              >
-                <Text>{item.text}</Text>
-              </Flex>
-            </Flex>
-          );
-        }
-      })}
-      <AlwaysScrollToBottom />
-    </Flex>
+  <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
+    {messages.map((item, index) => (
+      <Flex
+        key={index}
+        w={{ base: "100%", sm: "80%", md: "60%", lg: "50%", xl: "40%" }}
+        justify={item.from === "me" ? "flex-end" : "flex-start"}
+      >
+        {item.from !== "me" && (
+          <Box
+            as="img"
+            src="https://beta-ncfsaarathi.sunbird.org/assets/img/ncp/humanavatar.png"
+            alt="Avatar"
+            bg="blue.300"
+            borderRadius="full"
+            boxSize="30px"
+            mr="2"
+          />
+        )}
+        <Flex
+          bg={item.from === "me" ? "#61A7E9" : "gray.100"}
+          color="black"
+          minW="100px"
+          maxW="350px"
+          my="1"
+          p="3"
+        >
+          <Text
+            style={{
+              overflow: "hidden",
+              whiteSpace: "pre-wrap",
+              wordWrap: "break-word",
+              fontSize: fontSize, // Set the font size here
+            }}
+          >
+            {item.text}
+          </Text>
+        </Flex>
+      </Flex>
+    ))}
+  </Flex>
   );
 };
 

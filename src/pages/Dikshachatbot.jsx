@@ -22,6 +22,8 @@ function Dikshachatbot() {
   useLayoutEffect(() => {
     const savedText = localStorage.getItem("displayText");
 
+    console.log("savedText",savedText)
+
     if (savedText !== null) {
       // const updatedText = savedText.replace(/\s/g, "%20").toLowerCase();
 
