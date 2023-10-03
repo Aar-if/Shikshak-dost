@@ -36,8 +36,9 @@ const Messages = ({ messages }) => {
         <Flex
           bg={item.from === "me" ? "#61A7E9" : "gray.100"}
           color="black"
-          minW="100px"
-          maxW="350px"
+          minW="80%"
+          display="grid"
+          maxW="80%"
           my="1"
           p="3"
         >
@@ -46,6 +47,7 @@ const Messages = ({ messages }) => {
               overflow: "hidden",
               whiteSpace: "pre-wrap",
               wordWrap: "break-word",
+              width:"90%",
               fontSize: fontSize, // Set the font size here
             }}
           >
