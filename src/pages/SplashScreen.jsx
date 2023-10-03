@@ -27,6 +27,10 @@ function SplashScreen() {
   const activity = () => {
     window.open("http://20.219.197.218/explore");
   };
+const dikshachat=()=>
+{
+  navigate("/dikshachatui");
+}
 
   return (
     <div>
@@ -35,15 +39,16 @@ function SplashScreen() {
       </div>
       <div className={styles.innerDiv}>
         <div className={styles.buttonDiv}>
-          <Button
-            onClick={storyApp}
+        <Button
+            onClick={dikshachat}
             background="#F6B26B"
             size="lg"
             width={60}
             margin={3}
           >
-            {t("button1")}
+            {t("button5")}
           </Button>
+         
           <Button
             onClick={chatbot}
             background="#F6B26B"
@@ -63,6 +68,15 @@ function SplashScreen() {
             {t("button3")}
           </Button>
           <Button
+            onClick={storyApp}
+            background="#F6B26B"
+            size="lg"
+            width={60}
+            margin={3}
+          >
+            {t("button1")}
+          </Button>
+          {/* <Button
             onClick={activity}
             background="#F6B26B"
             size="lg"
@@ -70,7 +84,7 @@ function SplashScreen() {
             margin={3}
           >
             {t("button4")}
-          </Button>
+          </Button> */}
         </div>
       </div>
       <Footer />
