@@ -80,7 +80,7 @@ const DikshachatbotUi = () => {
   justify="center"
   align="center"
   marginTop="80px"
-  paddingX={{ base: "10px", md: "20px", lg: "40px" }} // Adjust the padding for different screen sizes
+  paddingX={{ base: "10px", md: "20px", lg: "40px" }}
 >
   <Flex h="100%" flexDir="column">
     <HeaderDiksha />
