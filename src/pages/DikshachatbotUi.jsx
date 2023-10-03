@@ -48,8 +48,7 @@ const DikshachatbotUi = () => {
           }
       );
   
-      const data = response.data.result.data;
-      console.log("data aala",data)
+      const data = response.data.result.data.slice(0,3);
 
       if (data) {
         setInputMessage("");

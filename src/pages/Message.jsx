@@ -13,7 +13,7 @@ const Messages = ({ messages }) => {
 
     return <div ref={elementRef} />;
   };
-
+console.log("msss",messages)
   return (
   <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
     {messages.map((item, index) => (
@@ -52,6 +52,7 @@ const Messages = ({ messages }) => {
             }}
           >
             {item.text}
+     
           </Text>
         </Flex>
       </Flex>
