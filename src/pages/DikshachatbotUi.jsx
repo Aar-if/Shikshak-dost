@@ -32,24 +32,36 @@ const DikshachatbotUi = () => {
     setIsLoading(true); // Start loading
     //chatbot
     try {
-        const requestBody = {
-            searchType: "text",
-            searchString: inputMessage,
-            audioCode: "",
-          };
-        
-          const response = await Axios.post(
-            "http://13.233.33.253:1245/intent/openai/search",
-            requestBody
-          );
-        
-          const data = response.data;
-        
-          if (data) {
-            setInputMessage("");
-            setMessages((old) => [...old, { from: "computer", text: data }]);
+      const requestBody = {
+          audioCode: "", 
+      };
+      const queryParams = {
+          searchType: "text",
+          searchString: inputMessage,
+      };
+  
+      const response = await Axios.post(
+          `https://aidiscovery.uniteframework.io/intent/openai/search`,
+          requestBody,
+          {
+              params: queryParams, 
           }
-    } catch (error) {
+      );
+  
+      const data = response.data.result.data;
+      console.log("data aala",data)
+
+      if (data) {
+        setInputMessage("");
+        const newMessages = data.map(item => ({
+          from: "computer",
+          text: `Title: ${item.title}\nType: ${item.type}\nLink: ${item.link}`
+        }));  
+        setMessages(oldMessages => [...oldMessages, ...newMessages]);
+      }
+      
+  } 
+   catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setIsLoading(false); // Stop loading
@@ -62,22 +74,27 @@ const DikshachatbotUi = () => {
     // </div>
     <>
       <Header />
-      <Flex w="100%" h="85vh" justify="center" align="center" marginTop="80px">
-        <Flex h="100%" flexDir="column">
-          <HeaderDiksha />
-          <Messages messages={messages} />
-          {isLoading && (
-            <div>Loading...</div> // Display loading indicator
-          )}
-          <div>
-            <Footer
-              inputMessage={inputMessage}
-              setInputMessage={setInputMessage}
-              handleSendMessage={handleSendMessage}
-            />
-          </div>
-        </Flex>
-      </Flex>
+      <Flex
+  w="100%"
+  h="85vh"
+  justify="center"
+  align="center"
+  marginTop="80px"
+  paddingX={{ base: "10px", md: "20px", lg: "40px" }} // Adjust the padding for different screen sizes
+>
+  <Flex h="100%" flexDir="column">
+    <HeaderDiksha />
+    <Messages messages={messages} />
+    {isLoading && <div>Loading...</div>}
+    <div>
+      <Footer
+        inputMessage={inputMessage}
+        setInputMessage={setInputMessage}
+        handleSendMessage={handleSendMessage}
+      />
+    </div>
+  </Flex>
+</Flex>
     </>
   );
 };

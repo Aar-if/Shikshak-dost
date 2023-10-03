@@ -3,7 +3,7 @@ import { Flex, Input, Button } from "@chakra-ui/react";
 
 const FooterDiksha = ({ inputMessage, setInputMessage, handleSendMessage }) => {
   return (
-	<Flex w="100%" mt="5">
+	<Flex  w="90%" mt="5" marginLeft="10px" marginRight="10px">
   	<Input
     	placeholder="Type Something..."
     	
@@ -22,6 +22,7 @@ const FooterDiksha = ({ inputMessage, setInputMessage, handleSendMessage }) => {
     	onChange={(e) => setInputMessage(e.target.value)}
   	/>
   	<Button
+	
     	 bg="#61A7E9"
 		 color="black"
     	borderRadius="none"
