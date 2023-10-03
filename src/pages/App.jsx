@@ -8,6 +8,7 @@ import QrScanner from "./QrScanner";
 import TeacherApp from "./TeacherApp";
 import Chatbot from "./Chatbot";
 import Chatbotui from "./Chatbotui";
+import DikshachatbotUi from "./DikshachatbotUi";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/teacherapp" element={<TeacherApp />} />
             <Route path="/chatbot" element={<Chatbot />} />
             <Route path="/chatbotui" element={<Chatbotui />} />
+            <Route path="/dikshachatui" element={<DikshachatbotUi/>} />
           </Routes>
         </Router>
       </Suspense>
