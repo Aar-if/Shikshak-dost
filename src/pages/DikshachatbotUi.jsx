@@ -7,17 +7,15 @@ import Messages from "./Message";
 import Axios from "axios";
 import Header from "./Header";
 import { Flex } from "@chakra-ui/react";
+import styles from "./Chatbot.module.css";
+import imagePath from "../assets/ChatBot_logo.png";
+import MessagesDiksha from "./MessageDiksha"
 const DikshachatbotUi = () => {
-  let [messages, setMessages] = useState([
+  const [messages, setMessages] = useState([
     { from: "computer", text: "Welcome to the Diksha AI Discovery Bot." },
-    // { from: "me", text: "Hey there" },
-    // { from: "me", text: "Myself Ferin Patel" },
-    // {
-    //   from: "computer",
-    //   text: "Help me with content for teaching 9th grade ",
-    // },
-    ]);
-  
+    // Add more initial messages here if needed
+  ]);
+
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,9 +24,8 @@ const DikshachatbotUi = () => {
       return;
     }
     setMessages((old) => [...old, { from: "me", text: inputMessage }]);
-  
     setIsLoading(true); // Start loading
-    //chatbot
+  
     try {
       const requestBody = {
         audioCode: "",
@@ -46,11 +43,10 @@ const DikshachatbotUi = () => {
         }
       );
       const data = response.data.result.data;
-
+  
       if (response) {
         console.log('Received response');
-
-        console.log(response.data.result,data);
+        console.log(response.data.result, data);
         const botMessage = data;
         if (data && Array.isArray(data)) {
           const extractedData = data.slice(0, 3).map(item => {
@@ -58,36 +54,39 @@ const DikshachatbotUi = () => {
             return { title, link };
           });
   
-          let newMessages = [
+          // const extractedData = data.reduce((result, item) => {
+          //   const { title, link } = item;
+          //   result[title] = link;
+          //   return result;
+          // }, {});
+          console.log("extractedData",extractedData)
+
+          // Create a new message for the user's input
+          const userMessage = { from: "me", text: inputMessage };
+  
+          // Create a new array combining old messages, user message, and bot messages
+          const newMessages = [
             ...messages,
-            { from: "computer", text: 'Based on your search, here are some diksha content...' }
+            userMessage,
+            { from: "computer", text: 'Based on your search, here are some diksha content...' },
+            ...extractedData.map(item => ({
+              from: "computer",
+              text: (
+                <React.Fragment>
+                 <a
+                    href={item.link}
+                    style={{ color: 'blue'}}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                   {item.title}
+                  </a>
+                </React.Fragment>
+              ),
+            })),
           ];
   
-          extractedData.forEach(item => {
-  
-            const message = `${item.title}:`;
-            const linkText = (
-              <a
-                href={item.link}
-                style={{ color: 'blue' }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {item.link}
-              </a>
-            );
-            newMessages = [
-              ...newMessages,
-              {
-                from: "computer", text: (
-                  <React.Fragment>
-                    {message}{linkText}
-                  </React.Fragment>
-                )
-              },
-            ];
-          });
-  
+          // Set the updated messages
           setMessages(newMessages);
         } else {
           console.error('API request failed');
@@ -95,8 +94,6 @@ const DikshachatbotUi = () => {
       } else {
         console.error('API request failed');
       }
-  
-      setInputMessage("");
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -104,35 +101,26 @@ const DikshachatbotUi = () => {
     }
   };
   
+  
 
   return (
     // <><div className={styles.menuDiv}>
     //   <button onClick={() => navigate("/")}>🏠</button>
     // </div>
     <>
-      <Header />
-      <Flex
-  w="100%"
-  h="85vh"
-  justify="center"
-  align="center"
-  marginTop="80px"
-  paddingX={{ base: "10px", md: "20px", lg: "40px" }}
->
-  <Flex h="100%" flexDir="column">
-    <HeaderDiksha />
-    <Messages messages={messages} />
-    {isLoading && <div>Loading...</div>}
-    <div>
-      <Footer
-        inputMessage={inputMessage}
-        setInputMessage={setInputMessage}
-        handleSendMessage={handleSendMessage}
-      />
-    </div>
-  </Flex>
-</Flex>
-    </>
+     
+      <Header /><div className={styles.chatcontainer}>
+
+        <div className={styles.chatcontent}>
+          <HeaderDiksha />
+          <MessagesDiksha messages={messages} />
+          {isLoading && <div className={styles.loading}>Loading...</div>}
+        </div>
+        <Footer
+          inputMessage={inputMessage}
+          setInputMessage={setInputMessage}
+          handleSendMessage={handleSendMessage} />
+      </div></>
   );
 };
 
