@@ -49,43 +49,50 @@ const DikshachatbotUi = () => {
         console.log(response.data.result, data);
         const botMessage = data;
         if (data && Array.isArray(data)) {
-          const extractedData = data.slice(0, 3).map(item => {
-            const { title, link } = item;
-            return { title, link };
-          });
-  
-          // const extractedData = data.reduce((result, item) => {
+          // const extractedData = data.slice(0, 3).map(item => {
           //   const { title, link } = item;
-          //   result[title] = link;
-          //   return result;
-          // }, {});
+          //   return { title, link };
+          // });
+  
+          const extractedData = data.reduce((result, item) => {
+            const { title, link } = item;
+            result[title] = link;
+            return result;
+          }, {});
           console.log("extractedData",extractedData)
 
           // Create a new message for the user's input
           const userMessage = { from: "me", text: inputMessage };
   
           // Create a new array combining old messages, user message, and bot messages
-          const newMessages = [
-            ...messages,
-            userMessage,
-            { from: "computer", text: 'Based on your search, here are some diksha content...' },
-            ...extractedData.map(item => ({
-              from: "computer",
-              text: (
-                <React.Fragment>
-                 <a
-                    href={item.link}
-                    style={{ color: 'blue'}}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                   {item.title}
-                  </a>
-                </React.Fragment>
-              ),
-            })),
-          ];
-  
+          const extractedDataList = Object.entries(extractedData).slice(0, 3); // Slice the first three items
+
+          const extractedDataMessage = {
+            from: "computer",
+            text: (
+              <React.Fragment>
+              <div>Based on your search, here are some diksha content...</div>
+              <ul>
+                {extractedDataList.map(([key, value]) => (
+                  <li key={key}>
+                    <a
+                      href={value}
+                      style={{ color: 'blue' }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {key}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </React.Fragment>
+            
+            
+            ),
+          };
+          
+          const newMessages = [...messages, userMessage, extractedDataMessage];
           // Set the updated messages
           setMessages(newMessages);
         } else {
