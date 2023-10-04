@@ -94,6 +94,8 @@ const DikshachatbotUi = () => {
           const newMessages = [...messages, userMessage, extractedDataMessage];
           // Set the updated messages
           setMessages(newMessages);
+          setInputMessage("");
+
         } else {
           console.error('API request failed');
         }
