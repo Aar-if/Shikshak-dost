@@ -61,3 +61,38 @@
   padding: 20px;
   /* Add any other styling you need for the loading indicator */
 }
+
+/* CSS for chat container */
+/* Center the chat container horizontally on the page */
+.chatcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  max-width: 360px; /* Set the maximum width for mobile view */
+  height: 85vh;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* CSS for chat content */
+.chatcontent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* CSS for loading indicator */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-weight: bold;
+}
+
+/* You can style your Header, HeaderDiksha, Messages, and Footer components within the .chat-content div */
