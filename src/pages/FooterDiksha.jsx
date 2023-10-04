@@ -5,7 +5,7 @@ import styles from "./Chatbot.module.css";
 
 const FooterChat = ({ inputMessage, setInputMessage, handleSendMessage }) => {
   return (
-    <Flex w="100%" mt="5">
+    <Flex w="90%" mt="5">
       <div style={{ position: "relative", flex: 1 }}>
         <Input
           placeholder="Type Something..."
@@ -37,7 +37,7 @@ const FooterChat = ({ inputMessage, setInputMessage, handleSendMessage }) => {
 		//   }}
 		title="Upcoming Feature"
         />	
-      </div>
+      </div>&nbsp; &nbsp;
       <Button
         bg="#61A7E9"
         color="black"
