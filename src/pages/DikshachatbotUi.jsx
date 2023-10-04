@@ -55,7 +55,7 @@ const DikshachatbotUi = () => {
   
           const extractedData = data.reduce((result, item) => {
             const { title, link } = item;
-            result[title] = link;
+            result[title] = link; 
             return result;
           }, {});
           console.log("extractedData",extractedData)
@@ -71,7 +71,7 @@ const DikshachatbotUi = () => {
             text: (
               <React.Fragment>
               <div>Based on your search, here are some diksha content...</div>
-              <ul>
+              <ul style={{marginLeft: "5px"}}>
                 {extractedDataList.map(([key, value]) => (
                   <li key={key}>
                     <a
