@@ -64,14 +64,14 @@ const DikshachatbotUi = () => {
           const userMessage = { from: "me", text: inputMessage };
   
           // Create a new array combining old messages, user message, and bot messages
-          const extractedDataList = Object.entries(extractedData).slice(0, 3); // Slice the first three items
+          const extractedDataList = Object.entries(extractedData); // Slice the first three items
 
           const extractedDataMessage = {
             from: "computer",
             text: (
               <React.Fragment>
               <div>Based on your search, here are some diksha content...</div>
-              <ul style={{marginLeft: "5px"}}>
+              <ul style={{marginLeft: "8px"}}>
                 {extractedDataList.map(([key, value]) => (
                   <li key={key}>
                     <a
