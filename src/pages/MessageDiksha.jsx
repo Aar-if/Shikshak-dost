@@ -14,7 +14,6 @@ const Messages = ({ messages }) => {
 
     return <div ref={elementRef} />;
   };
-console.log("Message came",messages)
   return (
     <Flex
       flexDirection="column"
