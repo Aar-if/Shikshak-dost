@@ -45,8 +45,7 @@ const DikshachatbotUi = () => {
       const data = response.data.result.data;
   
       if (response) {
-        console.log('Received response');
-        console.log(response.data.result, data);
+       
         const botMessage = data;
         if (data && Array.isArray(data)) {
           // const extractedData = data.slice(0, 3).map(item => {
@@ -116,18 +115,23 @@ const DikshachatbotUi = () => {
     // </div>
     <>
      
-      <Header /><div className={styles.chatcontainer}>
+      <Header />
+    <Flex w="100%" h="85vh" justify="center" align="center" marginTop="80px">
+    <div className={styles.chatcontainer}>
 
-        <div className={styles.chatcontent}>
-          <HeaderDiksha />
-          <MessagesDiksha messages={messages} />
-          {isLoading && <div className={styles.loading}>Loading...</div>}
-        </div>
-        <Footer
-          inputMessage={inputMessage}
-          setInputMessage={setInputMessage}
-          handleSendMessage={handleSendMessage} />
-      </div></>
+<div className={styles.chatcontent}>
+  <HeaderDiksha />
+  <MessagesDiksha messages={messages} />
+  {isLoading && <div className={styles.loading}>Loading...</div>}
+</div>
+<Footer
+  inputMessage={inputMessage}
+  setInputMessage={setInputMessage}
+  handleSendMessage={handleSendMessage} />
+</div>
+      </Flex>
+      
+   </>
   );
 };
 

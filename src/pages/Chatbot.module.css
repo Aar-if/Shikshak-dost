@@ -69,7 +69,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
   max-width: 360px; /* Set the maximum width for mobile view */
   height: 85vh;
   border-radius: 8px;
